@@ -168,12 +168,7 @@ Built by **Tinker** ([@Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)), the 
 [Pogly](https://pogly.gg) team: collaborative stream overlays, powered by SpacetimeDB, where permissions per overlay
 and per editor are a daily concern.
 
-Also from this workshop:
-- [spacetimedb-idc](https://github.com/Gazz-Stripbolt/spacetimedb-idc): databases that push messages to each other
-- [spacetimedb-voip](https://github.com/Gazz-Stripbolt/spacetimedb-voip): voice chat with no media server
-- [spacetimedb-webhooks](https://github.com/Gazz-Stripbolt/spacetimedb-webhooks): verified webhook inbox and signed outbox
-- [spacetimedb-oauth](https://github.com/Gazz-Stripbolt/spacetimedb-oauth): third-party OAuth tokens, stored and refreshed
-- [spacetimedb-http-site](https://github.com/Gazz-Stripbolt/spacetimedb-http-site): a whole website served from one module
+More SpacetimeDB building blocks from this workshop: **[github.com/Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)**.
 
 🚀 **New to SpacetimeDB?** If you sign up through **[this referral link](https://spacetimedb.com/?referral=Lethalchip)**,
 Pogly gets free recurring energy. Thank you!
