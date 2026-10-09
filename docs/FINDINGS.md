@@ -3,7 +3,7 @@
 What we learned building authorization on SpacetimeDB 2.11: one bug, a few row-level-security (RLS) limits, privacy
 tradeoffs and numbers.
 
-## Bug: a second RLS rule breaks live updates from a join rule
+## Bug: a second RLS rule breaks live updates from a join rule (reported: [#6125](https://github.com/clockworklabs/SpacetimeDB/issues/6125))
 
 When a table has **two** RLS rules (they're OR'd) and one of them is a join, rows that match only the join rule show up
 in the initial subscription but **never arrive as live inserts**. A rule on the table's own columns keeps working live.
@@ -31,6 +31,8 @@ Workaround: **one rule per table.** That's why members see the scope's roster (o
 grants + grants I manage", and why the audit log is visible to `authz.audit` holders only.
 
 ## RLS limits we designed around
+
+Reported upstream: [#6129](https://github.com/clockworklabs/SpacetimeDB/issues/6129) (joined table with its own rule), [#6128](https://github.com/clockworklabs/SpacetimeDB/issues/6128) (the docs' cross-join example), [#2830](https://github.com/clockworklabs/SpacetimeDB/issues/2830) (private joined table).
 
 1. **The joined table must be public and have no RLS of its own.** For a private table the subscription fails with
    `no such table … may be marked private`. If it has its own rule (e.g. `visible WHERE identity = :sender`), every
