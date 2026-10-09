@@ -70,9 +70,11 @@ and serve reads through procedures that call `can()`.
 
 ## Things worth knowing
 
-- **Clients can call scheduled reducers.** `spacetime call db authz_run_job '[1, {"Time":[0]}, 0, 1]'` reaches the
-  reducer in 2.11. Every scheduled reducer here checks `ctx.sender() == ctx.database_identity()` first. (Rust's
-  `ctx.identity()` is deprecated in favour of `database_identity()`.)
+- **The database owner can call scheduled reducers; other clients can't.** As the owner, `spacetime call db
+  authz_run_job '[1, {"Time":[0]}, 0, 1]'` reaches the reducer in 2.11. Any other identity gets
+  `404 No such procedure`. A [container](https://github.com/clockworklabs/SpacetimeDB/pull/6138) running as the
+  database could call it too. Every scheduled reducer here checks `ctx.sender() == ctx.database_identity()` first.
+  (Rust's `ctx.identity()` is deprecated in favour of `database_identity()`.)
 - **Table accessors and reducers share a namespace in Rust.** A table `accessor = authz_grant` and a reducer
   `fn authz_grant` don't compile (`E0428: the name authz_grant is defined multiple times`), because the table macro
   generates a trait with that name. So the reducers are verb-first (`authz_grant_role`).
