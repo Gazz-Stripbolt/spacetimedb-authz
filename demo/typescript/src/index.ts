@@ -3,7 +3,7 @@
  * as demo/rust and demo/csharp; serves the web client at /route/.
  */
 import { schema, table, t, Router, SyncResponse, SenderError } from 'spacetimedb/server';
-import * as authz from 'spacetimedb-authz';
+import * as authz from '@pogly/spacetimedb-authz';
 import PAGE from './page.gen';
 
 const demoProfile = table({ name: 'demo_profile', public: true }, { identity: t.identity().primaryKey(), name: t.string() });

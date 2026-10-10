@@ -7,3 +7,4 @@ obj/
 spike/
 demo/typescript/dist/
 demo/typescript/src/page.gen.ts
+/typescript/dist/

@@ -1,1 +1,55 @@
-{"name":"spacetimedb-authz","version":"0.1.0","type":"module","main":"src/index.ts","types":"src/index.ts","peerDependencies":{"spacetimedb":"2.11.*"}}
+{
+  "name": "@pogly/spacetimedb-authz",
+  "version": "0.1.0",
+  "description": "Roles, scopes and grants for SpacetimeDB, as a submodule: wildcard permissions, inheritance, scope trees, expiring grants, invites, no privilege escalation, audit log and RLS helpers. Same schema as authz.rs / Authz.cs.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "prepack": "npm run build"
+  },
+  "keywords": [
+    "spacetimedb",
+    "submodule",
+    "authorization",
+    "rbac",
+    "permissions",
+    "roles"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gazz-Stripbolt/spacetimedb-authz.git",
+    "directory": "typescript"
+  },
+  "homepage": "https://github.com/Gazz-Stripbolt/spacetimedb-authz/tree/main/typescript#readme",
+  "bugs": {
+    "url": "https://github.com/Gazz-Stripbolt/spacetimedb-authz/issues"
+  },
+  "peerDependencies": {
+    "spacetimedb": "2.11.*"
+  },
+  "devDependencies": {
+    "spacetimedb": "2.11.*",
+    "typescript": "^5.9.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}
