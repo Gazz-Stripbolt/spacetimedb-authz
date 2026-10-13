@@ -75,12 +75,19 @@ export function connect(flavor: Flavor, host: string, db: string, token?: string
 /** Reducer accessor names: `authz_grant_role` → `authzGrantRole`, `authz.grant_role` → `authz.grantRole`. */
 const camel = (s: string) => s.replace(/_([a-z])/g, (_m, c) => c.toUpperCase());
 
+/**
+ * Look up a submodule accessor such as `authz.grants`. SDK 2.11 keys them flat (`db['authz.grants']`);
+ * 2.12 nests them (`db.authz.grants`). Path segments are tried as written, then camelCased.
+ */
+const at = (o: any, path: string): any =>
+  o[path] ?? path.split('.').reduce((x, k) => x?.[k] ?? x?.[k.replace(/_([a-z])/g, (_m, c) => c.toUpperCase())], o);
+
 function wrap(flavor: Flavor, conn: Conn, identity: Identity, token: string): Authz {
   const n = NAMES[flavor];
   const d = conn.db as any;
   const r = conn.reducers as any;
-  const tbl = (name: string) => d[flavor === 'ns' ? name : camel(name)];
-  const red = (name: string) => r[camel(n.reducer(name))];
+  const tbl = (name: string) => (flavor === 'ns' ? at(d, name) : d[camel(name)]);
+  const red = (name: string) => at(r, camel(n.reducer(name)));
   const sql = { role: n.role, scope: n.scope, grant: n.grant, invite: n.invite, visible: n.visible, audit: n.audit, profile: 'demo_profile', doc: 'demo_doc' };
   return {
     flavor,
