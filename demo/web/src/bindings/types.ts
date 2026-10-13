@@ -30,6 +30,15 @@ export const AuthzConfig = __t.object("AuthzConfig", {
 });
 export type AuthzConfig = __Infer<typeof AuthzConfig>;
 
+export const AuthzEffective = __t.object("AuthzEffective", {
+  id: __t.u64(),
+  identity: __t.identity(),
+  scopeId: __t.u64(),
+  perms: __t.array(__t.string()),
+  validUntil: __t.option(__t.timestamp()),
+});
+export type AuthzEffective = __Infer<typeof AuthzEffective>;
+
 export const AuthzGrant = __t.object("AuthzGrant", {
   id: __t.u64(),
   identity: __t.identity(),

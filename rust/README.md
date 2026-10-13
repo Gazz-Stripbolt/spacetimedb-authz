@@ -4,7 +4,7 @@ One file. Copy [`authz.rs`](authz.rs) to your module's `src/authz.rs` and add `p
 
 ```toml
 # Cargo.toml: the row-level-security rules need `unstable`
-spacetimedb = { version = "2.11.*", features = ["unstable"] }
+spacetimedb = { version = "2.12.*", features = ["unstable"] }
 ```
 
 A complete module is in [`demo/rust`](../demo/rust/src/lib.rs). See the [main README](../README.md) for the model.

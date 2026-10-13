@@ -9,7 +9,7 @@ Roles, scopes and grants as a **SpacetimeDB submodule**. Source: [`src/index.ts`
 npm install @pogly/spacetimedb-authz spacetimedb
 ```
 
-Use `spacetimedb` 2.11.x, and keep only one copy of it in your module's dependency tree. With two copies,
+Use `spacetimedb` 2.11.x or 2.12.x, and keep only one copy of it in your module's dependency tree. With two copies,
 `spacetime publish` fails with *"Local module schema inspection failed"*. The package ships compiled JavaScript plus
 its TypeScript source, which is where the types come from.
 
@@ -19,7 +19,7 @@ To work on it from a clone instead, add this folder to your npm workspaces next 
 // package.json at your repo root
 { "private": true, "workspaces": ["spacetimedb-authz/typescript", "my-module"] }
 // my-module/package.json
-{ "dependencies": { "spacetimedb": "2.11.*", "@pogly/spacetimedb-authz": "*" } }
+{ "dependencies": { "spacetimedb": "2.12.*", "@pogly/spacetimedb-authz": "*" } }
 ```
 
 ## Wire it up

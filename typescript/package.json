@@ -1,6 +1,6 @@
 {
   "name": "@pogly/spacetimedb-authz",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Roles, scopes and grants for SpacetimeDB, as a submodule: wildcard permissions, inheritance, scope trees, expiring grants, invites, no privilege escalation, audit log and RLS helpers. Same schema as authz.rs / Authz.cs.",
   "license": "MIT",
   "type": "module",
@@ -42,10 +42,10 @@
     "url": "https://github.com/Gazz-Stripbolt/spacetimedb-authz/issues"
   },
   "peerDependencies": {
-    "spacetimedb": "2.11.*"
+    "spacetimedb": "2.11.* || 2.12.*"
   },
   "devDependencies": {
-    "spacetimedb": "2.11.*",
+    "spacetimedb": "2.12.*",
     "typescript": "^5.9.0"
   },
   "publishConfig": {
