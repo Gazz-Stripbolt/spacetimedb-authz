@@ -41,6 +41,9 @@
   "bugs": {
     "url": "https://github.com/Gazz-Stripbolt/spacetimedb-authz/issues"
   },
+  "submodule": {
+    "category": "auth"
+  },
   "peerDependencies": {
     "spacetimedb": "2.11.* || 2.12.*"
   },
