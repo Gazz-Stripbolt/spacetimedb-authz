@@ -2,7 +2,7 @@
 
 # 🔧 Spacetime Authz
 
-**Roles, scopes and grants for SpacetimeDB.**
+**Roles, scopes and grants for Spacetime.**
 
 The authorization layer every multi-user module ends up hand-rolling: roles with wildcard permissions and inheritance,
 a scope tree where grants flow downhill, expiring grants, invite links, an audit log, **no privilege escalation**, and
@@ -10,7 +10,7 @@ a scope tree where grants flow downhill, expiring grants, invite links, an audit
 **TypeScript (as a submodule)**, all with the same schema.
 
 [![CI](https://github.com/Gazz-Stripbolt/spacetimedb-authz/actions/workflows/ci.yml/badge.svg)](https://github.com/Gazz-Stripbolt/spacetimedb-authz/actions/workflows/ci.yml)
-![SpacetimeDB 2.12](https://img.shields.io/badge/SpacetimeDB-2.12-e8730c)
+![Spacetime 2.12](https://img.shields.io/badge/Spacetime-2.12-e8730c)
 ![TypeScript submodule](https://img.shields.io/badge/TypeScript-submodule-3178c6)
 [![npm](https://img.shields.io/npm/v/@pogly/spacetimedb-authz?label=npm%20%40pogly%2Fspacetimedb-authz&color=cb3837)](https://www.npmjs.com/package/@pogly/spacetimedb-authz)
 ![Rust](https://img.shields.io/badge/Rust-drop--in-b7410e)
@@ -35,7 +35,7 @@ a scope tree where grants flow downhill, expiring grants, invite links, an audit
 | **TypeScript**: add authz to a TS module, as a **submodule** | [`typescript/`](typescript): `npm install @pogly/spacetimedb-authz` ([npm](https://www.npmjs.com/package/@pogly/spacetimedb-authz)) |
 | **See it working**: a team workspace with invites and custom roles | [`demo/`](demo): one demo per language, sharing one web page |
 | **Tables, reducers and rules**, to build a client | [`docs/PROTOCOL.md`](docs/PROTOCOL.md) |
-| **Everything we learned**: RLS quirks, a SpacetimeDB bug, numbers | [`docs/FINDINGS.md`](docs/FINDINGS.md) |
+| **Everything we learned**: RLS quirks, a Spacetime bug, numbers | [`docs/FINDINGS.md`](docs/FINDINGS.md) |
 
 CI runs the same suites against every language:
 
@@ -136,7 +136,7 @@ Clients then manage access with the built-in reducers (`authz_grant_role`, `auth
 
 ## Good to know
 
-- **Row-level security is experimental** in SpacetimeDB (Rust needs the `unstable` feature, C# needs
+- **Row-level security is experimental** in Spacetime (Rust needs the `unstable` feature, C# needs
   `#pragma warning disable STDB_UNSTABLE`). The checks in reducers work without it. RLS is what hides data from
   subscriptions.
 - **`authz_visible` is public.** RLS can only join tables that have no RLS of their own, so the table your rules join
@@ -147,7 +147,7 @@ Clients then manage access with the built-in reducers (`authz_grant_role`, `auth
   module owner bypasses RLS anyway.
 - **Deleting a scope** removes its subtree, grants, invites and scoped roles, but not your rows. Delete those in your own
   reducer first (`authz_delete_scope` is off by default for this reason).
-- **One RLS rule per table.** SpacetimeDB 2.11 has a bug that drops live updates when a table has a join rule plus
+- **One RLS rule per table.** Spacetime 2.11 has a bug that drops live updates when a table has a join rule plus
   another rule. See [FINDINGS](docs/FINDINGS.md#bug-a-second-rls-rule-breaks-live-updates-from-a-join-rule).
 
 ## Repository layout
@@ -166,12 +166,12 @@ docs/                  PROTOCOL.md · FINDINGS.md · screenshots
 ## Credits
 
 Built by **Tinker** ([@Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)), the resident gadgeteer for the
-[Pogly](https://pogly.gg) team: collaborative stream overlays, powered by SpacetimeDB, where permissions per overlay
+[Pogly](https://pogly.gg) team: collaborative stream overlays, powered by Spacetime, where permissions per overlay
 and per editor are a daily concern.
 
-More SpacetimeDB building blocks from this workshop: **[github.com/Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)**.
+More Spacetime building blocks from this workshop: **[github.com/Gazz-Stripbolt](https://github.com/Gazz-Stripbolt)**.
 
-🚀 **New to SpacetimeDB?** If you sign up through **[this referral link](https://spacetimedb.com/?referral=Lethalchip)**,
+🚀 **New to Spacetime?** If you sign up through **[this referral link](https://spacetimedb.com/?referral=Lethalchip)**,
 Pogly gets free recurring energy. Thank you!
 
 ## License

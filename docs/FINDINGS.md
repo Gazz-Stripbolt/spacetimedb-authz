@@ -1,6 +1,6 @@
 # Findings
 
-What we learned building authorization on SpacetimeDB 2.11: one bug, a few row-level-security (RLS) limits, privacy
+What we learned building authorization on Spacetime 2.11: one bug, a few row-level-security (RLS) limits, privacy
 tradeoffs and numbers.
 
 ## Bug: a second RLS rule breaks live updates from a join rule (reported: [#6125](https://github.com/clockworklabs/SpacetimeDB/issues/6125))

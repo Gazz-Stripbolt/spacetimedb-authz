@@ -1,6 +1,6 @@
 # spacetimedb-authz for TypeScript (submodule)
 
-Roles, scopes and grants as a **SpacetimeDB submodule**. Source: [`src/index.ts`](src/index.ts) · Complete example:
+Roles, scopes and grants as a **Spacetime submodule**. Source: [`src/index.ts`](src/index.ts) · Complete example:
 [`demo/typescript`](../demo/typescript/src/index.ts) · Protocol: [`docs/PROTOCOL.md`](../docs/PROTOCOL.md)
 
 ## Install
