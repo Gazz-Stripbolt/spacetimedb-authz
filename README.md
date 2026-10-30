@@ -10,7 +10,7 @@ a scope tree where grants flow downhill, expiring grants, invite links, an audit
 **TypeScript (as a submodule)**, all with the same schema.
 
 [![CI](https://github.com/Gazz-Stripbolt/spacetimedb-authz/actions/workflows/ci.yml/badge.svg)](https://github.com/Gazz-Stripbolt/spacetimedb-authz/actions/workflows/ci.yml)
-![Spacetime 2.12](https://img.shields.io/badge/Spacetime-2.12-e8730c)
+![Spacetime 2.14](https://img.shields.io/badge/Spacetime-2.14-e8730c)
 ![TypeScript submodule](https://img.shields.io/badge/TypeScript-submodule-3178c6)
 [![npm](https://img.shields.io/npm/v/@pogly/spacetimedb-authz?label=npm%20%40pogly%2Fspacetimedb-authz&color=cb3837)](https://www.npmjs.com/package/@pogly/spacetimedb-authz)
 ![Rust](https://img.shields.io/badge/Rust-drop--in-b7410e)
@@ -108,7 +108,7 @@ live: grant someone `viewer` and the docs appear on their screen.
 ## Quick start (Rust)
 
 ```rust
-// src/lib.rs (Cargo.toml: spacetimedb = { version = "2.12.*", features = ["unstable"] })
+// src/lib.rs (Cargo.toml: spacetimedb = { version = "2.14.*", features = ["unstable"] })
 pub mod authz;   // copy rust/authz.rs to src/authz.rs
 
 #[spacetimedb::reducer(init)]
@@ -136,6 +136,8 @@ Clients then manage access with the built-in reducers (`authz_grant_role`, `auth
 
 ## Good to know
 
+- **Needs a 2.14 host.** Modules built with the 2.14 libraries export a changed HTTP handler ABI, and older hosts reject
+  them ([release notes](https://github.com/clockworklabs/SpacetimeDB/releases/tag/v2.14.0)).
 - **Row-level security is experimental** in Spacetime (Rust needs the `unstable` feature, C# needs
   `#pragma warning disable STDB_UNSTABLE`). The checks in reducers work without it. RLS is what hides data from
   subscriptions.
