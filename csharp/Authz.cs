@@ -86,7 +86,10 @@ public static partial class Module
         /// <summary>Permissions plus everything inherited, flattened. Maintained by the module.</summary>
         public List<string> Effective;
         /// <summary>Defined by module code (clients can't change or delete it).</summary>
-        public bool System;
+        // Lowercase on purpose: the 2.14 C# codegen emits `System.Runtime...` as an attribute argument
+        // on generated code, so a member named `System` breaks the build (CS0120). The column name
+        // stays `system` either way, so the schema still matches Rust and TypeScript.
+        public bool system;
     }
 
     /// <summary>The scope tree. Path lists the ancestors, root first (not 0, not the scope itself).</summary>
@@ -565,7 +568,7 @@ public static partial class Module
     public static void AuthzUpdateRole(ReducerContext ctx, ulong roleId, List<string> permissions, List<ulong> inherits)
     {
         var role = ctx.Db.AuthzRole.Id.Find(roleId) ?? throw new Exception("no such role");
-        if (role.System) throw new Exception("system roles can only be changed by the module");
+        if (role.system) throw new Exception("system roles can only be changed by the module");
         AuthzRequire(ctx, AUTHZ_ROLE, role.ScopeId);
         if (!AuthzHoldsAll(ctx, ctx.Sender, role.Effective, role.ScopeId)) throw new Exception("you can only change roles whose permissions you hold");
         AuthzCheckPerms(permissions);
@@ -582,7 +585,7 @@ public static partial class Module
     public static void AuthzDeleteRole(ReducerContext ctx, ulong roleId)
     {
         var role = ctx.Db.AuthzRole.Id.Find(roleId) ?? throw new Exception("no such role");
-        if (role.System) throw new Exception("system roles can only be deleted by the module");
+        if (role.system) throw new Exception("system roles can only be deleted by the module");
         AuthzRequire(ctx, AUTHZ_ROLE, role.ScopeId);
         if (!AuthzHoldsAll(ctx, ctx.Sender, role.Effective, role.ScopeId)) throw new Exception("you can only delete roles whose permissions you hold");
         if (ctx.Db.AuthzGrant.RoleId.Filter(roleId).Any()) throw new Exception("role is still granted");
@@ -746,7 +749,7 @@ public static partial class Module
             Permissions = permissions,
             Inherits = inherits,
             Effective = effective,
-            System = system,
+            system = system,
         });
         AuthzLog(ctx, by, "role.create", null, r.Id, scopeId, name);
         return r.Id;
