@@ -1,6 +1,6 @@
 {
   "name": "@pogly/spacetimedb-authz",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Roles, scopes and grants for SpacetimeDB, as a submodule: wildcard permissions, inheritance, scope trees, expiring grants, invites, no privilege escalation, audit log and RLS helpers. Same schema as authz.rs / Authz.cs.",
   "license": "MIT",
   "type": "module",
